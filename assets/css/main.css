@@ -142,9 +142,11 @@ p {
     margin-top: calc(var(--global-space) * 2);
 }
 
-.post-title h1 {
+.post-title h1,
+.main-title h1 {
     margin-top: var(--global-space);
     margin-bottom: calc(var(--global-space) * 2);
+    font-size: var(--title-font-size);
 }
 
 .main-nav {
@@ -154,10 +156,6 @@ p {
 .logo,
 h1 {
     font-weight: 600
-}
-
-.post-title h1 {
-    font-size: var(--title-font-size);
 }
 
 .logo+*,
@@ -228,7 +226,6 @@ pre code {
 }
 
 .main .logo,
-.main h1,
 .main h2,
 .main h3,
 .main h4,
@@ -343,11 +340,38 @@ p {
     color: var(--global-font-color)
 }
 
-.container {
-    max-width: var(--page-width)
+.main-title,
+.main-content,
+.footer {
+  width:100%
+}
+
+.main-img {
+  width: auto;
+  max-width: calc(50% + 0.5vw);
+  margin: 0 0 1.5em;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-img > figure {
+  margin: 0;
+}
+
+.main-title {
+  text-align: center;
+}
+
+.main-title h1 {
+  font-family: var(--mono-font-stack);
 }
 
 .container {
+    max-width: var(--page-width);
     margin: 0 auto;
     padding: 0 calc(var(--global-space) * 3);
 }
@@ -459,10 +483,6 @@ figure {
 figure > figcaption {
     color: var(--secondary-color);
     text-align: center;
-}
-
-.post-title h1 {
-    font-size: var(--title-font-size);
 }
 
 .details {

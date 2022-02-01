@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{ .Site.Title }}{{ $url := urls.Parse .Page.Permalink }}{{ $url.Path }}</title>
+    {{ with .Site.Params.description }}<meta name="description" content="{{ . | plainify }}">{{ end }}
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="{{ (partial "author.html" . ) }}">
+    <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}" />
+    {{ $css := resources.Get "css/main.css" }}
+    {{ $style := $css | resources.Minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
+
+    {{- partial "favicon.html" . -}}
+    <!-- Generator -->
+    {{- hugo.Generator }}
+    {{ with .OutputFormats.Get "RSS" }}
+      {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
+    {{ end }}
+    {{- partial "opengraph.html" . -}}
+    {{- partial "twitter_cards.html" . -}}
+
+    {{- partial "header.html" . -}}
+</head>
+<body class="main">
+    <div class="container">
+        <div class="main-nav">
+          <header class="main-logo">
+            <div class="logo">
+              {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
+              {{ $.Scratch.Add "path" .Site.BaseURL }}
+                <a href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a>/{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></header>
+          <nav class="main-menu">
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                {{ range .Site.Params.navlinks }}
+                <li><a href="{{ absURL .url }}" typeof="ListItem">{{ .name }}</a></li>
+                {{ end }}
+            </ul>
+          </nav>
+        </div>
+    </div>
+
+    <div class="container">
+        {{ block "main" . }}
+        {{ end }}
+        {{ partial "footer.html" . }}
+    </div>
+  </body>
+{{ $css := resources.Get "css/syntax.css" }}
+{{ $style := $css | resources.Minify | fingerprint }}
+<link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
+</html>

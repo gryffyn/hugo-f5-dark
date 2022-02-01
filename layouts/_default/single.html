@@ -1,0 +1,26 @@
+{{ define "main" }}
+<div class="post-title">
+    <h1>
+        {{ .Title }}
+        {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
+    </h1>
+</div>
+{{- if .Params }}
+<div class="post-meta">
+    {{- if .Params.PublishDate }}
+    <div class="post-meta-date">
+        {{ .PublishDate.Format "Jan 2, 2006" }}
+    </div>
+    <span aria-hidden="true" style="color: var(--primary-color);font-weight: bold;margin:0 8px">//</span>
+    {{- end }}
+    {{ with .Params.Description }}
+    <div class="post-meta-desc">
+        {{ . }}
+    </div>
+    {{ end }}
+</div>
+{{- end }}
+<div class="main-content">
+    {{ .Content }}
+</div>
+{{ end }}

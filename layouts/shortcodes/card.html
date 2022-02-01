@@ -1,0 +1,11 @@
+{{ $.Scratch.Set "card_title" false }}
+{{ $.Scratch.Set "card_title" (.Get "title") }}
+
+<div class="card">
+    {{ with .Get "title" }}
+    <header>{{ . }}</header>
+    {{ end }}
+    <div class="card-content">
+        {{ .Inner | markdownify }}
+    </div>
+</div>

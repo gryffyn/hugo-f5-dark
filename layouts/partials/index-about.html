@@ -1,0 +1,9 @@
+{{ if .Site.Params.Sections.About }}
+<h1>About</h1>
+{{ with .Site.Params.About }}
+<div class="index-about-desc">
+    <p>{{ . }}</p>
+    <a href="about/">(more)</a>
+</div>
+{{ end }}
+{{ end }}

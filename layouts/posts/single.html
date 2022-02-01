@@ -1,0 +1,22 @@
+{{ define "main" }}
+<div class="post-title">
+    <h1>{{ .Title }}{{- if .Draft }}&nbsp;[draft]{{- end }}</h1>
+</div>
+<div class="post-meta">
+    <div class="post-meta-date">
+        {{ .PublishDate.Format "Jan 2, 2006" }}
+    </div>
+    {{ with .Params.Description }}
+    <span aria-hidden="true" style="color: var(--primary-color);font-weight: bold;margin:0 8px">//</span>
+    <div class="post-meta-desc">
+        {{ . }}
+    </div>
+    {{ end }}
+</div>
+{{- if (.Param "ShowToc") }}
+{{- partial "toc.html" . }}
+{{- end }}
+<div class="post-content" >
+    {{ partial "anchored_headings" .Content }}
+</div>
+{{ end }}

@@ -1,0 +1,18 @@
+name = "f5-dark"
+license = "MIT"
+licenselink = "https://github.com/gryffyn/hugo-f5-dark/blob/main/LICENSE"
+description = "A minimal, responsive, and accessible theme for Hugo using the F5 color scheme. Fork of hugo-theme-console."
+homepage = "https://github.com/gryffyn/hugo-f5-dark"
+tags = ["blog", "accessible", "clean", "personal", "minimal", "monotone", "simple", "technical", "responsive", "mobile", "minimalist"]
+features = ["responsive"]
+min_version = "0.69.0"
+
+[author]
+    name = "gryffyn"
+    homepage = "https://gryffyn.io"
+    github = "https://github.com/gryffyn"
+
+[original]
+    name = "Marcin Mierzejewski"
+    homepage = "https://mrmierzejewski.com"
+    github = "https://github.com/mrmierzejewski"

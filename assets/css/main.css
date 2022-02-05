@@ -349,7 +349,7 @@ p {
 .main-img {
   width: auto;
   max-width: calc(50% + 0.5vw);
-  margin: 0 0 1.5em;
+  margin: 3em 0 1.5em;
 }
 
 .main-container {
@@ -360,6 +360,7 @@ p {
 
 .main-img > figure {
   margin: 0;
+  max-width: 80%;
 }
 
 .main-title {

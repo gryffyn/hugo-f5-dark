@@ -545,10 +545,15 @@ figure > figcaption {
 }
 
 .post-meta {
-    display: flex;
     color: var(--secondary-color);
     font-family: var(--mono-font-stack);
     flex-wrap: wrap;
+}
+
+.post-meta > span {
+    color: var(--primary-color);
+    font-weight: bold;
+    margin:0 8px
 }
 
 .post-meta-date {

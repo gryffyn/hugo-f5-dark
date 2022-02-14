@@ -445,6 +445,26 @@ label {
     bottom: 1.2rem;
 }
 
+.svg-alert-icon {
+    stroke-linejoin: round;
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width: 3.728;
+    fill:none;
+}
+
+.svg-alert-icon-1 {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-width:3.728;
+    fill:none;
+}
+
+.svg-alert-icon-2 {
+    stroke-width: 0;
+    fill:currentColor;
+}
+
 .alert-warn {
     padding: 1em 1em 1em 3.25em;
     color: var(--background-color);

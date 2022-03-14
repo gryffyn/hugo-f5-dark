@@ -31,11 +31,11 @@
 <body class="main">
     <header class="container">
         <nav class="main-nav">
-          <header class="main-logo">
+          <div class="main-logo">
             <div class="logo">
               {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
               {{ $.Scratch.Add "path" .Site.BaseURL }}
-                <a href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a>/{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></header>
+                <a href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a>/{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></div>
           <div class="main-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 {{ range .Site.Params.navlinks }}

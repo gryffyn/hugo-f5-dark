@@ -313,20 +313,16 @@ ul ul {
     margin-bottom: 0
 }
 
-.main-menu li a:not(.btn) {
+.main-menu li a:hover {
+    background: var(--primary-color);
+    color: var(--invert-font-color)
+}
+
+.main-menu li a {
     text-decoration: none;
     display: block;
     width: 100%;
     color: var(--secondary-color)
-}
-
-.main-menu li a.active {
-    color: var(--font-color)
-}
-
-.main-menu li a:hover {
-    background: 0 0;
-    color: var(--primary-color)
 }
 
 hr {

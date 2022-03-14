@@ -130,7 +130,7 @@ section {
 
 .footer {
     font-size: var(--mono-font-size);
-    margin-top: 3rem;
+    margin: 3rem auto;
     padding-top: 0.33em;
     border-top: 1px solid var(--secondary-color);
     color: var(--secondary-color);
@@ -340,7 +340,8 @@ p {
 .main-title,
 .main-content,
 .footer {
-  width:100%
+  width:100%;
+  max-width: var(--page-width);
 }
 
 .main-img {

@@ -46,11 +46,6 @@ html {
     color: var(--font-color);
 }
 
-a:focus {
-    border: 4px solid var(--primary-color);
-    background: var(--background-color);
-}
-
 body {
     font-family: var(--body-font-stack);
     font-size: var(--global-font-size);
@@ -85,9 +80,15 @@ a {
     text-decoration: none
 }
 
+a:focus,
 a:hover {
     background-color: var(--primary-color);
     color: var(--invert-font-color)
+}
+
+a:active {
+    border: 4px solid var(--primary-color);
+    background-color: var(--background-color);
 }
 
 em {
@@ -324,7 +325,7 @@ ul ul {
 
 .main-menu li a:hover {
     background: 0 0;
-    color: inherit
+    color: var(--primary-color)
 }
 
 hr {

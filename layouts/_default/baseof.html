@@ -11,7 +11,6 @@
     {{ $css := resources.Get "css/main.css" }}
     {{ $style := $css | resources.Minify | fingerprint }}
     <link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
-
     {{- partial "favicon.html" . -}}
     <!-- Generator -->
     {{- hugo.Generator }}
@@ -20,11 +19,9 @@
     {{ end }}
     {{- partial "opengraph.html" . -}}
     {{- partial "twitter_cards.html" . -}}
-
-    <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
-    <!--[if lt IE 9]>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+    {{ $css := resources.Get "css/syntax.css" }}
+    {{ $style := $css | resources.Minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
 
     {{- partial "header.html" . -}}
 </head>
@@ -35,7 +32,7 @@
             <div class="logo">
               {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
               {{ $.Scratch.Add "path" .Site.BaseURL }}
-                <a href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a>/{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></div>
+                <a aria-label="Home" href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a><span aria-hidden="true" class="title-sep">/</span>{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span aria-hidden="true" class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></div>
           <div class="main-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 {{ range .Site.Params.navlinks }}
@@ -55,7 +52,4 @@
 
     {{ partial "footer.html" . }}
   </body>
-{{ $css := resources.Get "css/syntax.css" }}
-{{ $style := $css | resources.Minify | fingerprint }}
-<link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
 </html>

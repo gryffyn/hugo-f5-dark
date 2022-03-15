@@ -614,6 +614,7 @@ figure > figcaption {
 
 .post {
     color: var(--secondary-color);
+    margin-top: calc(var(--global-space) * 3);
 }
 
 .post h2 {

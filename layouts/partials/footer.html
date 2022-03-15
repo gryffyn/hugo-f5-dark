@@ -1,5 +1,11 @@
-{{ with $.Site.Params.Info }}
 <footer class="footer">
-    <p>© {{ now.Format "2006" }} <a href="{{ .Link }}">{{ .Author }}</a></p>
+    {{ with $.Site.Params.Info }}
+    <p>© {{ now.Format "2006" }} <a href="{{ .Link }}">{{ .Author }}</a> -- 
+    {{ end }}
+    {{- with .Site.Home -}}
+      {{ with .OutputFormats.Get "rss" -}}
+        <a href="{{ .Permalink }}" rel="noopener {{ .Rel }}" type="{{ .MediaType.Type }}">rss</a>
+      {{ end -}}
+    {{- end -}}
+    </p>
 </footer>
-{{ end }}

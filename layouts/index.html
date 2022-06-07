@@ -11,6 +11,9 @@
     <h1>{{ .Title }}</h1>
 </div>
 <div class="main-content" >
+    {{ if site.Params.socialLinks }}
+        {{ partial "social_links" site.Params.socialLinks }}
+    {{ end }}
     {{ partial "anchored_headings" .Content }}
 </div>
 </div>

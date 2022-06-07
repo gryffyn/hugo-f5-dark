@@ -361,7 +361,8 @@ p {
   max-width: 80%;
 }
 
-.main-title {
+.main-title,
+.social-links {
   text-align: center;
 }
 

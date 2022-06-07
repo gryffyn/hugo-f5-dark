@@ -1,0 +1,5 @@
+<div class="social-links">
+    {{- range $key, $tag := . }}
+    {{- if ne $key 0 }} -- {{ end }}<a href="{{ trim $tag.url " " }}" target="_blank" rel="noopener noreferrer me">{{ $tag.name }}</a>
+    {{- end }}
+</div>

@@ -54,7 +54,7 @@
     {{ with .Site.Params.goatcounter }}
     {{ $js := resources.Get "js/count.v3.js" }}
     {{ $countjs := $js | resources.Minify | fingerprint }}
-    <script type="text/javascript" src="{{ $countjs.Permalink }}" integrity="{{ $countjs.Data.Integrity }}"></script>
+    <script data-goatcounter="{{ .Site.Params.GcURL }}count" async type="text/javascript" src="{{ $countjs.Permalink }}" integrity="{{ $countjs.Data.Integrity }}"></script>
     {{ end }}
   </body>
 </html>

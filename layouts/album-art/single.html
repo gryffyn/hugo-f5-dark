@@ -9,7 +9,7 @@
 {{ $image := index (.Resources.ByType "image") 0 }}
 {{ $image320 := $image.Resize "320x" }}
 {{ $image640 := $image.Resize "640x" }}
-<div class="album-art-img">
+<div class="gallery-img">
     <picture>
         <source srcset="{{ $image.RelPermalink }}" media="(min-width: 1000px)">
         <source srcset="{{ $image640.RelPermalink }}" media="(min-width: 640px)">
@@ -17,7 +17,7 @@
     </picture>
 </div>
 
-<a class="album-art-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
+<a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
 
 <div class="gallery-content" >
     {{ .Content }}

@@ -8,7 +8,7 @@
 {{ range sort .Data.Pages "Date" "desc" }}
     {{ if not .Params.private }}
         <div class="page-list-entry">
-            <span class="page-list-label">{{ .Title }}</span>
+            <span class="page-list-label">{{ .PublishDate.Format "2006-01-02" }}</span>
             <h2>{{- if .Draft }}[draft]&nbsp;{{- end }}<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
             {{ .Description }}
         </div>

@@ -1,0 +1,6 @@
+<picture>
+    {{ $url := safeURL .Destination }}
+    {{ $image_ext := path.Ext $url }}
+    <source srcset="{{ $url }}" type='image/{{replace $image_ext "." ""}}'>
+    <img loading="lazy" src="{{ $url }}" alt="{{ .Text }}" {{ with .Title}} title="{{ . }}" {{ end }}/>
+</picture>

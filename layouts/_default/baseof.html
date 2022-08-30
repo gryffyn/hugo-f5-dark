@@ -4,52 +4,56 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>{{ .Site.Title }}{{ $url := urls.Parse .Page.Permalink }}{{ $url.Path }}</title>
-    {{ with .Site.Params.description }}<meta name="description" content="{{ . | plainify }}">{{ end }}
+    {{ with .Site.Params.description }}
+    <meta name="description" content="{{ . | plainify }}">
+    {{ end }}
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="{{ (partial "author.html" . ) }}">
-    <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL " " }} {{- else -}} {{ .Permalink }} {{- end }}" />
+    <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL "" }} {{- else -}} {{ .Permalink }} {{- end -}}" />
     {{ $css := resources.Get "css/main.css" }}
     {{ $style := $css | resources.Minify | fingerprint }}
     <link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
-    {{- partial "favicon.html" . -}}
+    {{ partial "favicon.html" . -}}
     <!-- Generator -->
-    {{- hugo.Generator }}
+    {{ hugo.Generator -}}
     {{ with .OutputFormats.Get "RSS" }}
-      {{ printf `<link href="%s" rel="%s" type="%s" title="%s" />` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
+    {{ printf `<link href="%s" rel="%s" type="%s" title="%s"/>` .Permalink .Rel .MediaType.Type $.Site.Title | safeHTML }}
     {{ end }}
     {{- partial "opengraph.html" . -}}
     {{- partial "twitter_cards.html" . -}}
     {{ $css := resources.Get "css/syntax.css" }}
     {{ $style := $css | resources.Minify | fingerprint }}
     <link rel="stylesheet" href="{{ $style.Permalink | absURL }}" integrity="{{ $style.Data.Integrity }}">
-
-    {{- partial "header.html" . -}}
+    {{ partial "header.html" . -}}
 </head>
+
 <body class="main">
-    <header class="container">
-        <nav class="main-nav">
-          <div class="main-logo">
+<header class="container">
+    <nav class="main-nav">
+        <div class="main-logo">
             <div class="logo">
-              {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}
-              {{ $.Scratch.Add "path" .Site.BaseURL }}
-                <a aria-label="Home" href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a><span aria-hidden="true" class="title-sep">/</span>{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span aria-hidden="true" class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end }}{{ end }}</div></div>
-          <div class="main-menu">
+                {{ $url := replace .Permalink ( printf "%s" .Site.BaseURL) "" }}{{ $.Scratch.Add "path" .Site.BaseURL }}
+                <a aria-label="Home" href="{{ .Site.BaseURL }}" class="no-style {{ with .Site.Params.TitleCutting }}site-name{{ end }}">{{ .Site.Title }}</a><span aria-hidden="true" class="title-sep">/</span>{{ range $index, $element := split $url "/" }}{{ $.Scratch.Add "path" $element }}{{ if ne $element "" }}<a class="title-loc" href='{{ $.Scratch.Get "path" | absURL }}'>{{ . }}</a><span aria-hidden="true" class="title-sep">/</span>{{ $.Scratch.Add "path" "/" }}{{ end -}}
+                {{ end }}
+            </div>
+        </div>
+        <div class="main-menu">
             <ul vocab="https://schema.org/" typeof="BreadcrumbList">
                 {{ range .Site.Params.navlinks }}
                 <li><a href="{{ absURL .url }}" typeof="ListItem">{{ .name }}</a></li>
                 {{ end }}
             </ul>
-          </div>
-        </nav>
-    </header>
+        </div>
+    </nav>
+</header>
 
-    <main class="container">
-        <article>
-          {{ block "main" . }}
-          {{ end }}
-        </article>
-    </main>
+<main class="container">
+    <article>
+        {{ block "main" . }}
+        {{ end }}
+    </article>
+</main>
 
-    {{ partial "footer.html" . }}
-  </body>
+{{- partial "footer.html" . -}}
+</body>
 </html>

@@ -1,0 +1,35 @@
+{{ define "main" }}
+{{ $image := index (.Resources.ByType "image") 0 }}
+{{ $title := $image.RelPermalink | path.BaseName }}
+
+<div class="gallery-title">
+    <h1>{{ $title }}</h1>
+</div>
+
+{{ $image320 := $image.Resize "320x" }}
+{{ $image640 := $image.Resize "640x" }}
+<div class="gallery-img">
+    <picture>
+        <source srcset="{{ $image.RelPermalink }}" media="(min-width: 1000px)">
+        <source srcset="{{ $image640.RelPermalink }}" media="(min-width: 640px)">
+        <img src="{{ safeURL $image320.RelPermalink }}" alt="{{ $title }}" title="{{ $title }}" >
+    </picture>
+</div>
+
+<a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
+
+<div class="gallery-content" >
+    {{ .Content }}
+</div>
+
+{{ with .Params.Metadata }}
+<table class="gallery-metadata">
+    {{ range $key, $val := . }}
+    <tr>
+        <td>{{ $key | humanize }}</td>
+        <td>{{ $val }}</td>
+    </tr>
+    {{ end }}
+</table>
+{{ end }}
+{{ end }}

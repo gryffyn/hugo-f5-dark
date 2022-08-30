@@ -1,0 +1,18 @@
+{{ define "main" }}
+<div class="page-list-title">
+    <h1>{{ .Page.Title }}</h1>
+</div>
+{{ .Content }}
+
+<nav class="page-list">
+    {{ range sort .Data.Pages "Title" "desc" }}
+    {{ if not .Params.private }}
+    <div class="page-list-entry">
+        <span class="page-list-label">{{ len .Data.Pages }} images</span>
+        <h2>{{- if .Draft }}[draft]&nbsp;{{- end }}<a href="{{ .Permalink }}" title="{{ .Title }}">{{ .Title }}</a></h2>
+        {{ .Description }}
+    </div>
+    {{ end }}
+    {{ end }}
+</nav>
+{{ end }}

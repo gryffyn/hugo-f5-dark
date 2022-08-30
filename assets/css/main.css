@@ -725,8 +725,7 @@ figure > figcaption {
         margin-right: 0
     }
     .page-list,
-    .posts-list,
-    .gallery-list {
+    .posts-list {
         padding-left: 150px;
     }
     .page-list-label {

@@ -7,7 +7,7 @@
     {{ with .Site.Params.description }}
     <meta name="description" content="{{ . | plainify }}">
     {{ end }}
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes, shrink-to-fit=no">
     <meta name="author" content="{{ (partial "author.html" . ) }}">
     <link rel="canonical" href="{{ if .Params.canonicalURL -}} {{ trim .Params.canonicalURL "" }} {{- else -}} {{ .Permalink }} {{- end -}}" />
     {{ $css := resources.Get "css/main.css" }}

@@ -606,6 +606,8 @@ figure > figcaption {
     margin: 0;
 }
 
+.posts-list,
+.page-list,
 .gallery-list {
     position: relative;
     top: 0;

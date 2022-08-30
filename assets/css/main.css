@@ -622,6 +622,11 @@ figure > figcaption {
     margin-bottom: calc(var(--global-space) * 3);
 }
 
+.page-list-entry,
+.posts-list-entry {
+  margin-top: calc(var(--global-space) * 3);
+}
+
 .gallery-list-entry {
     color: var(--secondary-color);
     margin-top: calc(var(--global-space) * 4);
@@ -713,7 +718,9 @@ figure > figcaption {
     .main-menu li:last-child {
         margin-right: 0
     }
-    .page-list {
+    .page-list,
+    .posts-list,
+    .gallery-list {
         padding-left: 150px;
     }
     .page-list-label {

@@ -586,6 +586,8 @@ h2:hover a, h3:hover a, h4:hover a {
     font-family: var(--mono-font-stack);
     flex-wrap: wrap;
     display: flex;
+    column-gap: 8px;
+    row-gap: 2px;
 }
 
 .post-meta > span {
@@ -599,6 +601,7 @@ h2:hover a, h3:hover a, h4:hover a {
 
 .post-meta-desc {
     overflow: auto;
+    flex: 1 0 100%;
 }
 
 .post-meta-words {
@@ -765,11 +768,6 @@ h2:hover a, h3:hover a, h4:hover a {
     .alert,
     .card {
         margin: 1.5em 2.5em;
-    }
-    .post-meta {
-        flex-wrap: wrap;
-        display: flex;
-        gap: 8px;
     }
 }
 

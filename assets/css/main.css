@@ -83,7 +83,7 @@ a {
 a:focus,
 a:hover {
     background-color: var(--primary-color);
-    color: var(--invert-font-color)
+    color: var(--invert-font-color) !important;
 }
 
 a:active {
@@ -172,7 +172,8 @@ h5,
 h6 {
     position: relative;
     margin-bottom: var(--global-line-height);
-    font-weight: 600
+    font-weight: 700;
+    margin-top: 24px;
 }
 
 blockquote {
@@ -209,7 +210,7 @@ p code {
 }
 
 pre {
-    padding: var(--global-space);
+    padding: 0 var(--global-space);
 }
 
 pre code {
@@ -220,7 +221,8 @@ pre code {
     border-radius: 6px;
     background-color: var(--code-bg-color);
     min-width: 100%;
-    font-family: var(--mono-font-stack)
+    font-family: var(--mono-font-stack);
+    padding-left: 8px;
 }
 
 .post code {
@@ -390,6 +392,11 @@ img {
 	font-size: calc(var(--global-font-size)/1.25);
 }
 
+.post-series-card h4 {
+    margin-top: 0;
+    font-weight: 600;
+}
+
 .post-title {
     font-size: var(--title-font-size);
     flex: 1 0 100%;
@@ -544,37 +551,33 @@ figure > figcaption {
 }
 
 .post-content h2 {
-    font-size: 1.66em;
+    font-size: calc(var(--global-font-size)*1.75);
 }
 
 .post-content h3 {
-    font-size: 1.25em;
+    font-size: calc(var(--global-font-size)*1.5);
 }
 
 .post-content h4 {
-    font-size: 1.15em;
+    font-size: calc(var(--global-font-size)*1.35);
 }
 
 .post-content h5 {
-    font-size: 1.05em;
+    font-size: calc(var(--global-font-size)*1.25)
 }
 
 .post-content h6 {
-    font-size: 1em;
+    font-size: calc(var(--global-font-size)*1.75);
 }
 
-.post-content-heading a {
-    position: absolute;
-    top: 0.9rem;
-    left: -1em;
-    font-size: calc(var(--title-font-size) * 0.8);
-    padding: 0;
-    margin: 0;
+h2:hover a, h3:hover a, h4:hover a {
+	visibility: visible;
 }
 
 .post-content-heading {
-    position: relative;
-    padding: calc(var(--global-space)*2)0
+    margin: 8px;
+    transition: 0.2s;
+    visibility: hidden;
 }
 
 .post-meta {
@@ -645,6 +648,10 @@ figure > figcaption {
 .page-list-entry,
 .posts-list-entry {
   margin-top: calc(var(--global-space) * 3);
+}
+
+.page-list-entry-meta h2 {
+    margin: 0;
 }
 
 .gallery-list-entry {
@@ -748,7 +755,7 @@ figure > figcaption {
         left: 0;
         width: auto;
         z-index: 400;
-        padding-top: 3px;
+        padding-top: 0.2rem;
     }
     .alert,
     .card {

@@ -5,6 +5,7 @@
     --global-line-height: 1.6;
     --global-font-color: #dadadb;
     --background-color: #1d1e20;
+    --dark-bg-color: #171819;
     --global-space: 0.5rem;
     --page-width: 42em;
     --mono-font-stack: "Source Code Pro", "Fira Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace, serif;
@@ -384,7 +385,7 @@ img {
 }
 
 .post-series-card {
-	background: #131314;
+	background: var(--dark-bg-color);
 	border-radius: 12px;
 	padding: 12px 16px 0 16px;
 	border: 2px solid #454547;

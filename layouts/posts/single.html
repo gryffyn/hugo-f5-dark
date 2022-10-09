@@ -7,6 +7,7 @@
     <div class="post-meta-desc">
         {{ . }}
     </div>
+    <div class="post-meta-words">{{ math.Round (div (add $.WordCount 239) 240.0) }} min. {{ $.WordCount }} words</div>
     {{ end }}
 </header>
 {{- if (.Param "ShowToc") }}

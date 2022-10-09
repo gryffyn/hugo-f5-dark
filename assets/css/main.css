@@ -600,6 +600,10 @@ h2:hover a, h3:hover a, h4:hover a {
     overflow: auto;
 }
 
+.post-meta-words {
+    margin-left: auto;
+}
+
 .index-about {
     padding-bottom: 2.5em;
 }

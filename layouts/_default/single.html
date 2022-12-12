@@ -1,24 +1,20 @@
 {{ define "main" }}
-<div class="post-title">
-    <h1>
-        {{ .Title }}
-        {{- if .Draft }}<div class="entry-isdraft"><sup>&nbsp;&nbsp;[draft]</sup></div>{{- end }}
-    </h1>
-</div>
 {{- if .Params }}
-<div class="post-meta">
-    {{- if .Params.PublishDate }}
-    <div class="post-meta-date">
-        {{ .PublishDate.Format "Jan 2, 2006" }}
-    </div>
-    <span aria-hidden="true">//</span>
-    {{- end }}
+<header class="post-meta">
+    <h1 class="post-title">{{ .Title }}{{- if .Draft }}&nbsp;[draft]{{- end }}</h1>
     {{ with .Params.Description }}
-    <div class="post-meta-desc">
+    <p class="post-meta-desc">
         {{ . }}
-    </div>
+    </p>
     {{ end }}
-</div>
+    {{ $lastmod := .Lastmod.Format "2006.01.02 15:04" }}
+    <!-- {{ $date := .Date.Format "2006.01.02 15:04" }}
+    <time class="post-meta-date" datetime="{{ .Date.Format "2006-01-02 15:04" }}">pub. {{ .Date.Format "2006-01-02" }}</time>
+    {{ if ne $lastmod $date }}
+    <span aria-hidden="true">//</span> -->
+    <time class="post-meta-date" datetime="{{ .Lastmod.Format "2006-01-02 15:04" }}">ed. {{ .Lastmod.Format "2006-01-02" }}</time>
+    <!-- {{ end }} -->
+</header>
 {{- end }}
 <div class="main-content">
     {{ .Content }}

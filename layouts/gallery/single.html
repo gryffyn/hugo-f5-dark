@@ -1,16 +1,19 @@
 {{ define "main" }}
-{{ $image := index (.Resources.ByType "image") 0 }}
-{{ $title := $image.RelPermalink | path.BaseName }}
-
 <div class="gallery-title">
-    <h1>{{ $title }}</h1>
+    <h1>{{ .Title }}</h1>
 </div>
+{{ if .Description }}
+    <div class="gallery-subtitle">
+        <h2>{{ .Description }}</h2>
+    </div>
+{{ end }}
 
+{{ $image := index (.Resources.ByType "image") 0 }}
 {{ $image640 := $image.Resize "640x" }}
 <div class="gallery-img">
     <picture>
         <source srcset="{{ $image640.RelPermalink }}" media="(max-width: 320px)">
-        <img src="{{ safeURL $image.RelPermalink }}" alt="{{ $title }}" title="{{ $title }}">
+        <img src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" >
     </picture>
 </div>
 

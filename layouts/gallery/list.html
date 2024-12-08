@@ -1,0 +1,34 @@
+{{ define "main" }}
+<div class="page-list-title">
+    <h1>{{ .Page.Title }}</h1>
+</div>
+{{ .Content }}
+
+<nav class="gallery-list">
+    {{ if .Params.sortDesc }}
+        {{ range sort .Data.Pages "Description" "asc" }}
+            {{ if not .Params.private }}
+                {{ $image := index (.Resources.ByType "image") 0 }}
+                {{ $image := $image.Resize "640x" }}
+                <div class="gallery-list-entry">
+                    <a href="{{ .RelPermalink }}"><img loading="lazy" src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}"/></a>
+                    <a href="{{ .RelPermalink }}" class="gallery-entry-title"><h2>{{ .Title }}</h2></a>
+                    {{ if .Description }}{{ .Description }}{{ end }}
+                </div>
+            {{ end }}
+        {{ end }}
+    {{ else }}
+        {{ range sort .Data.Pages "Title" "asc" }}
+            {{ if not .Params.private }}
+                {{ $image := index (.Resources.ByType "image") 0 }}
+                {{ $image := $image.Resize "640x" }}
+                <div class="gallery-list-entry">
+                    <a href="{{ .RelPermalink }}"><img loading="lazy" src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}"/></a>
+                    <a href="{{ .RelPermalink }}" class="gallery-entry-title"><h2>{{ .Title }}</h2></a>
+                    {{ if .Description }}{{ .Description }}{{ end }}
+                </div>
+            {{ end }}
+        {{ end }}
+    {{ end }}
+</nav>
+{{ end }}

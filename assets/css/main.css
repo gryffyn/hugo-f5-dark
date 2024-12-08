@@ -308,7 +308,7 @@ ul ul {
     display: flex;
     flex-direction: row;
     font-size: var(--global-font-size);
-    gap: 16px;
+    gap: 8px;
     margin-top: var(--global-space)
 }
 

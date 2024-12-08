@@ -295,7 +295,7 @@ ol ol {
 .main-nav {
     display: flex;
     flex-direction: column;
-    align-items: flex-start
+    align-items: baseline;
 }
 
 ul ul {
@@ -668,6 +668,18 @@ h2:hover a, h3:hover a, h4:hover a {
     max-width: calc(var(--page-width) / 2.5);
 }
 
+.gallery-spacing-3 {
+    max-width: calc(var(--page-width) / 3.6);
+}
+
+.gallery-spacing-4 {
+    max-width: calc(var(--page-width) / 4.8);
+}
+
+.gallery-entry-title h2 {
+    margin-top: 6px;
+}
+
 .gallery-title h1 {
     font-weight: 600;
     padding: calc(var(--global-space)) 0 calc(var(--global-space));
@@ -681,8 +693,17 @@ h2:hover a, h3:hover a, h4:hover a {
     text-align: right;
 }
 
-.gallery-img {
+.gallery-imgset {
     margin-top: calc(var(--global-space) * 4);
+    display: flex;
+    flex-direction: row;
+    gap: 12px;
+}
+
+.gallery-img {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
 }
 
 .page-list-entry h2 {
@@ -742,7 +763,7 @@ h2:hover a, h3:hover a, h4:hover a {
 @media only screen and (min-width:32em) {
     .main-nav {
         flex-direction: row;
-        align-items: center
+        align-items: baseline;
     }
     .main-menu ul {
         margin-top: calc(var(--global-space) * 2)

@@ -10,7 +10,7 @@
             {{ if not .Params.private }}
                 {{ $image := index (.Resources.ByType "image") 0 }}
                 {{ $image := $image.Resize "640x" }}
-                <div class="gallery-list-entry">
+                <div class="gallery-list-entry{{ if $.Params.spacing }} gallery-spacing-{{ $.Params.spacing }}{{ end }}">
                     <a href="{{ .RelPermalink }}"><img loading="lazy" src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}"/></a>
                     <a href="{{ .RelPermalink }}" class="gallery-entry-title"><h2>{{ .Title }}</h2></a>
                     {{ if .Description }}{{ .Description }}{{ end }}
@@ -22,7 +22,7 @@
             {{ if not .Params.private }}
                 {{ $image := index (.Resources.ByType "image") 0 }}
                 {{ $image := $image.Resize "640x" }}
-                <div class="gallery-list-entry">
+                <div class="gallery-list-entry{{ if $.Params.spacing }} gallery-spacing-{{ $.Params.spacing }}{{ end }}">
                     <a href="{{ .RelPermalink }}"><img loading="lazy" src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}"/></a>
                     <a href="{{ .RelPermalink }}" class="gallery-entry-title"><h2>{{ .Title }}</h2></a>
                     {{ if .Description }}{{ .Description }}{{ end }}

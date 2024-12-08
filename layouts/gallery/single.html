@@ -8,16 +8,32 @@
     </div>
 {{ end }}
 
-{{ $image := index (.Resources.ByType "image") 0 }}
-{{ $image640 := $image.Resize "640x" }}
-<div class="gallery-img">
-    <picture>
-        <source srcset="{{ $image640.RelPermalink }}" media="(max-width: 320px)">
-        <img src="{{ safeURL $image.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" >
-    </picture>
-</div>
-
-<a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
+{{ if gt (len (.Resources.ByType "image")) 1 }}
+    <div class="gallery-imgset">
+    {{ range $k, $image := (.Resources.ByType "image") }}
+        {{ $image640 := $image.Resize "640x q80" }}
+        <div class="gallery-img">
+            <picture class="gallery-picture">
+                <source srcset="{{ $image640.RelPermalink }}" media="(max-width: 320px)">
+                <img decoding="async" src="{{ safeURL $image640.RelPermalink }}" alt="{{ $.Title }}{{ if $.Description }} -- {{ $.Description }}{{ end }}" title="{{ $.Title }}{{ if $.Description }} -- {{ $.Description }}{{ end }}" >
+            </picture>
+            <a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
+        </div>
+    {{ end }}
+    </div>
+{{ else }}
+    {{ $image := index (.Resources.ByType "image") 0 }}
+    {{ $image800 := $image.Resize "800x q80" }}
+    <div class="gallery-imgset">
+        <div class="gallery-img">
+            <picture class="gallery-picture">
+                <source srcset="{{ $image800.RelPermalink }}" media="(max-width: 320px)">
+                <img decoding="async" src="{{ safeURL $image800.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" >
+            </picture>
+            <a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
+        </div>
+    </div>
+{{ end }}
 
 <div class="gallery-content" >
     {{ .Content }}
@@ -27,7 +43,11 @@
 <table class="gallery-metadata">
     {{ range $key, $val := . }}
     <tr>
-        <td>{{ $key | humanize }}</td>
+        {{ if $.Params.sortKeys }}
+            <td>{{ substr $key 3 | humanize }}</td>
+        {{ else }}
+            <td>{{ $key | humanize }}</td>
+        {{ end }}
         <td>{{ $val }}</td>
     </tr>
     {{ end }}

@@ -15,7 +15,7 @@
         <div class="gallery-img">
             <picture class="gallery-picture">
                 <source srcset="{{ $image640.RelPermalink }}" media="(max-width: 320px)">
-                <img decoding="async" src="{{ safeURL $image640.RelPermalink }}" alt="{{ $.Title }}{{ if $.Description }} -- {{ $.Description }}{{ end }}" title="{{ $.Title }}{{ if $.Description }} -- {{ $.Description }}{{ end }}" >
+                <img decoding="async" src="{{ safeURL $image640.RelPermalink }}" alt="{{ $.Title }}{{ if $.Description }} -- {{ $.Description }}{{ end }}">
             </picture>
             <a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
         </div>
@@ -28,7 +28,7 @@
         <div class="gallery-img">
             <picture class="gallery-picture">
                 <source srcset="{{ $image800.RelPermalink }}" media="(max-width: 320px)">
-                <img decoding="async" src="{{ safeURL $image800.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" title="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}" >
+                <img decoding="async" src="{{ safeURL $image800.RelPermalink }}" alt="{{ .Title }}{{ if .Description }} -- {{ .Description }}{{ end }}">
             </picture>
             <a class="gallery-fullres" href="{{ $image.RelPermalink }}">Full Res</a>
         </div>

@@ -690,7 +690,7 @@ h2:hover a, h3:hover a, h4:hover a {
 }
 
 .gallery-fullres {
-    text-align: right;
+    max-width: fit-content;
 }
 
 .gallery-imgset {

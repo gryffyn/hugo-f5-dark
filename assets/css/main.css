@@ -1,3 +1,13 @@
+@font-face {
+  font-display: swap;
+  font-family: CCSymbols;
+  font-synthesis: none;
+  src: url(fonts/CCSymbols.woff2) format(woff2),
+       url(fonts/CCSymbols.woff)  format(woff);
+  unicode-range: u+a9, u+229c,
+                 u+1f10d-f, u+1f16d-f;
+}
+
 :root {
     --global-font-size: calc(0.95em + 0.1vw);
     --title-font-size: 2rem;
@@ -10,6 +20,7 @@
     --page-width: 46em;
     --mono-font-stack: "Source Code Pro", "Fira Mono", Menlo, Consolas, "Liberation Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", monospace, serif;
     --body-font-stack: -apple-system, BlinkMacSystemFont, "Fira Sans", "Segoe UI", Roboto, Oxygen, "Droid Sans", Ubuntu, Cantarell, "Helvetica Neue", Arial, sans-serif;
+    --cc-font-stack: CCSymbols, var(--body-font-stack);
     --font-color: #dadadb;
     --invert-font-color: var(--background-color);
     --primary-color: #f5a9c9;
@@ -55,6 +66,10 @@ body {
     margin-bottom: 75px;
     word-wrap: break-word;
     background-color: var(--background-color)
+}
+
+.ccsym {
+    font-family: var(--cc-font-stack);
 }
 
 .logo,

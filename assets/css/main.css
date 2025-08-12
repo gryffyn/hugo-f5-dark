@@ -2,8 +2,8 @@
   font-display: swap;
   font-family: CCSymbols;
   font-synthesis: none;
-  src: url(fonts/CCSymbols.woff2) format(woff2),
-       url(fonts/CCSymbols.woff)  format(woff);
+  src: url(/fonts/CCSymbols.woff2) format(woff2),
+       url(/fonts/CCSymbols.woff)  format(woff);
   unicode-range: u+a9, u+229c,
                  u+1f10d-f, u+1f16d-f;
 }
